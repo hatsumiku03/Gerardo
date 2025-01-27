@@ -1,4 +1,4 @@
-export default () => { 
+const NavBar = () => { 
     return `
         <nav>
         <ul>
@@ -8,4 +8,6 @@ export default () => {
         </ul>
         </nav>
     `;
-}
+};
+
+export default NavBar;
