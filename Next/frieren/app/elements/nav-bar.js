@@ -1,6 +1,6 @@
 const NavBar = () => { 
     return (
-        <div className="sm:flex absolute text-center justify-center min-h-full h-screen w-fit bg-white dark:bg-black dark:border-white border-black border-r-4 text-2xl hidden">
+        <div className="sm:flex hidden fixed text-center justify-center min-h-full h-screen w-fit bg-white dark:bg-black dark:border-white border-black border-r-4 text-2xl">
         <div className="absolute top-3 text-4xl font-bold italic">
             <h1>Frieren</h1>
         </div>
