@@ -1,5 +1,5 @@
-import { createPost } from "../app/lib/actions"
-import ImageSelector from "../app/ui/imageSelector"
+import { createPost } from "../lib/actions"
+import ImageSelector from "../ui/imageSelector"
 
 export default () =>{
     return(
