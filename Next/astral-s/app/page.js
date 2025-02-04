@@ -1,12 +1,9 @@
-import { createPost } from "../app/lib/actions"
-import ImageSelector from "../app/ui/imageSelector"
+import PostList from "./ui/postlist";
 
-export default () =>{
-    return(
-        <form action={createPost} className="flex flex-col gap-8">
-            <input name="content"/>
-            <ImageSelector />
-            <input type="submit"/>
-        </form>
-    )
+export default function Home() {
+return (
+    <>
+        <PostList/>
+    </>
+    );
 }
