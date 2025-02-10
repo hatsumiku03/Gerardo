@@ -5,7 +5,8 @@ import { auth0 } from "../lib/auth0";
 export default async () => {
 
     const posts = await getPosts();
-    const user_id  = (await auth0.getSession()).user
+    const user_id  = (await auth0.getSession()).user.id;
+    
     console.log('user_id: '+user_id)
 
     return (
