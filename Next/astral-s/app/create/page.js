@@ -1,12 +1,12 @@
 import { createPost } from "../lib/actions"
 import ImageSelector from "../ui/imageSelector"
 
-export default () =>{
-    return(
+export default () => {
+    return (
         <form action={createPost} className="flex flex-col gap-8">
-            <input name="content"/>
             <ImageSelector />
-            <input type="submit"/>
+            <input name="content" className="text-black" required/>
+            <input className="rounded bg-teal-800 p-2" type="submit" value="Publicar" />
         </form>
     )
 }

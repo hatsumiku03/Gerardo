@@ -10,9 +10,16 @@ export default async () => {
     console.log('user_id: '+user_id)
 
     return (
-        <div className="flex flex-col grow items-center gap-16 mt-28">
-            {
-                posts.map(post => <Post key={post.post_id} post_id={post.post_id} user_id={user_id} content={post.content} url={post.url}/>)
+        <div className="flex flex-col grow items-center gap-16">
+            { 
+                posts.map(post => (<Post 
+
+                    key={post.post_id} 
+
+                    post={post}
+                    user_id={user_id} 
+                    isLikedInitial={likes.find(like => like.post_id === post.post_id)}
+                />))
             }
         </div>
     )
