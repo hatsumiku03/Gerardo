@@ -7,11 +7,11 @@ export  const uid = async () => {
   
   export const auth0 = new Auth0Client({
       async beforeSessionSaved(session, idToken) {
-          const { nickname, name, picture, email } = session.user;
+          const { username, name, picture, email } = session.user;
   
           try {
               await sql`INSERT INTO sa_users(username,name,picture,email) VALUES(
-                  ${nickname}, ${name}, ${picture}, ${email}
+                  ${username}, ${name}, ${picture}, ${email}
               )`
           } catch(e){}
   
