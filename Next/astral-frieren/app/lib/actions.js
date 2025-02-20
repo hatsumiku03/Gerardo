@@ -42,3 +42,16 @@ export async function removeLike(post_id, user_id){
         WHERE post_id = ${post_id} AND user_id = ${user_id}
     `
 }
+
+export async function addComment(formData) {
+    const content = formData.get('content');
+    const post_id = formData.get('post_id');
+    const user_id = (await auth0.getSession()).user.user_id;
+    
+    await sql`INSERT INTO sa_comments(content, user_id, post_id) 
+        VALUES(
+            ${content},
+            ${user_id},
+            ${post_id}
+        )`
+}

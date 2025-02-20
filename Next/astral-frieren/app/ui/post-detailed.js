@@ -2,6 +2,7 @@ import { ChatBubbleLeftIcon, HeartIcon } from "@heroicons/react/24/solid"
 import Image from "next/image"
 import Link from "next/link"
 import LikeButton from "./like-button"
+import { addComment } from "../lib/actions"
 
 export default ({
     user_id, 
@@ -14,19 +15,19 @@ export default ({
         <div className="flex flex-col max-w-sm gap-2">
            <div className="flex gap-2">
                 <Image src={post.picture} 
-                    alt="profile_photo"
+                    alt="hola"
                     className="rounded-full"
                     width={24}
                     height={24}
                 />
                 <span>{post.username}</span>
-                <span>X días</span>
+                <span>X dia</span>
            </div>
 
            <div>
                 <Link href={`/post/${post.post_id}`}>
                     <Image src={post.url} 
-                        alt="post_image"
+                        alt="hola"
                         className=""
                         width={284}
                         height={284}
@@ -45,6 +46,10 @@ export default ({
             <p><span className="font-bold">{post.username}</span> {post.content}</p>
            </div>
            <div><Link href={`/post/${post.post_id}`}>Ver los X comentarios</Link></div>
+           <form action={addComment}>
+             <input type="hidden" name="post_id" value={post.post_id}></input>
+             <input name="content" className="w-full outline-0 dark:bg-neutral-950" type="text" placeholder="Add comment" />
+           </form>
         </div>
     )
 }

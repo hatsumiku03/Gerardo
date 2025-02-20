@@ -5,16 +5,16 @@ import { useState } from "react";
 
 export default () => {
 
-    const [inyaki, setInyaki] = useState("/preview.jpg");
+    const [photo, setPhoto] = useState("/preview.jpg");
 
     function preview(ev){
-        setInyaki(URL.createObjectURL(ev.target.files[0]));
+        setPhoto(URL.createObjectURL(ev.target.files[0]));
     }
 
     return (<>
         <label htmlFor="myfs">
-            <Image id="ima" src={inyaki} width={256} height={256} alt="preview" />
+            <Image id="ima" src={photo} width={256} height={256} alt="preview" />
         </label>
-        <input id="myfs" type="file" name="media" hidden onChange={preview} required/>
+        <input id="myfs" type="file" name="media" hidden onChange={preview}/>
     </>)
 }
