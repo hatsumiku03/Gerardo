@@ -62,3 +62,20 @@ export async function getLikes(user_id){
 export async function getLike(user_id, post_id){
     return (await sql`SELECT post_id FROM sa_likes WHERE user_id = ${user_id} AND post_id=${post_id}`).rows;
 }
+
+export async function getCommentsByPostId(post_id) {
+    return (await sql`
+        SELECT 
+            sa_comments.comment_id, 
+            sa_comments.user_id, 
+            sa_comments.post_id, 
+            sa_comments.content, 
+            sa_users.name,
+            sa_users.picture
+        FROM 
+            sa_comments 
+            JOIN sa_users ON sa_comments.user_id = sa_users.user_id 
+        WHERE 
+            sa_comments.post_id = ${post_id}
+    `).rows;
+    }

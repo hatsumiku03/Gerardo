@@ -28,8 +28,8 @@ export default ({
                     <Image src={post.url} 
                         alt="post_image"
                         className=""
-                        width={284}
-                        height={284}
+                        width={350}
+                        height={350}
                     />
                 </Link>
            </div>

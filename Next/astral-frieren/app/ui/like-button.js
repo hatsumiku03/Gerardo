@@ -9,7 +9,6 @@ export default ({post_id, user_id, isLikedInitial}) => {
 
     let [isLiked, setIsLiked] = useState(isLikedInitial);
 
-    // TODO: quitar de aqui
     function toogleLike() {
         if (isLiked) {
             removeLike(post_id, user_id);
@@ -22,7 +21,7 @@ export default ({post_id, user_id, isLikedInitial}) => {
 
     return (
         <HeartIcon onClick={toogleLike} 
-        className={clsx("w-8",{"text-red-600":isLiked})} />
+        className={clsx("w-8 cursor-pointer",{"text-red-600":isLiked})} />
 
         
 

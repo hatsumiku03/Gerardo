@@ -4,7 +4,7 @@ const nextConfig = {
         domains: [
             's.gravatar.com',
             'lh3.googleusercontent.com',
-	    'qitjtoefg1l9sije.public.blob.vercel-storage.com'
+	    'qitjtoefg1l9sije.public.blob.vercel-storage.com',
         ]
     }
 };

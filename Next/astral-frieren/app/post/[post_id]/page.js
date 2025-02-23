@@ -1,5 +1,5 @@
 import { auth0 } from "@/app/lib/auth0";
-import { getLike, getPost } from "@/app/lib/data"
+import { getLike, getPost, getCommentsByPostId } from "@/app/lib/data"
 import PostDetailed from "@/app/ui/post-detailed"
 
 export default async ({params}) => {
@@ -8,12 +8,14 @@ export default async ({params}) => {
 
     const post = (await getPost(post_id))[0];
     const like = await getLike(user_id, post_id);
+    const comments = await getCommentsByPostId(post_id);
 
     return (<>
         <PostDetailed 
             user_id={user_id} 
             post={post}
             isLikedInitial={like.length > 0} 
+            comments={comments}
         />
     </>)
 }
