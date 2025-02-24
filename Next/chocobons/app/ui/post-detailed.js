@@ -65,7 +65,6 @@ export default ({
             <p>{post.content}</p>
            </div>
 
-            // ! Pasar el formulario a un componente a parte
            <div className="mt-2">
                <form action={addComment}>
                  <input type="hidden" name="post_id" value={post.post_id}></input>
