@@ -1,5 +1,5 @@
-"use client"
-import { useRef } from "react";
+// "use client"
+// import { useRef } from "react";
 import { ChatBubbleLeftIcon, HeartIcon } from "@heroicons/react/24/solid"
 import Image from "next/image"
 import Link from "next/link"
@@ -15,15 +15,15 @@ export default ({
 }) => {
 
     // ! Remover esto y pasarlo a un componente a parte para no usar use client
-    const formRef = useRef(null);
+    // const formRef = useRef(null);
 
-    // Mover la lógica a actions
-    const handleKeyDown = (event) => {
-        if (event.key === 'Enter' && !event.shiftKey) {
-            event.preventDefault();
-            formRef.current.submit();
-        }
-    };
+    // // Mover la lógica a actions
+    // const handleKeyDown = (event) => {
+    //     if (event.key === 'Enter' && !event.shiftKey) {
+    //         event.preventDefault();
+    //         formRef.current.submit();
+    //     }
+    // };
 
     return (
         <div className="flex flex-col max-w-sm gap-2">
@@ -67,9 +67,9 @@ export default ({
 
             // ! Pasar el formulario a un componente a parte
            <div className="mt-2">
-               <form ref={formRef} action={addComment}>
+               <form action={addComment}>
                  <input type="hidden" name="post_id" value={post.post_id}></input>
-                 <textarea name="content" className="p-1 rounded-md w-full outline-0 bg-neutral-900" type="text" placeholder="Añadir comentario" required onKeyDown={handleKeyDown}/>
+                 <input name="content" className="p-1 rounded-md w-full outline-0 bg-neutral-900" type="text" placeholder="Añadir comentario" required/>
                </form>
            </div>
 

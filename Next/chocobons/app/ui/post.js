@@ -47,7 +47,6 @@ export default ({
            <div>
             <p>{post.content}</p>
            </div>
-
         </div>
     )
 }
