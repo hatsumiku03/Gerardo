@@ -27,24 +27,27 @@ export default ({
                 <Link href={`/post/${post.post_id}`}>
                     <Image src={post.url} 
                         alt="post_image"
-                        className=""
-                        width={350}
-                        height={350}
+                        className="border-2 border-white rounded-md"
+                        width={384}
+                        height={384}
                     />
                 </Link>
            </div>
 
            <div>
                 <div className="flex gap-2">
-                    <LikeButton post_id={post.post_id} user_id={user_id} isLikedInitial={isLikedInitial} />
-                    <ChatBubbleLeftIcon className="w-8" />
+                    <div className="flex gap-1">
+                        <LikeButton post_id={post.post_id} user_id={user_id} isLikedInitial={isLikedInitial} /><span className="mt-1">{post.num_likes}</span>
+                    </div>
+                    <div className="flex gap-1">
+                        <ChatBubbleLeftIcon className="w-8" /><span className="mt-1">{post.num_comments}</span>
+                    </div>
                 </div>
-                <span>{post.num_likes} Me gusta</span>
            </div>
            <div>
-            <p><span className="font-bold">{post.username}</span> {post.content}</p>
+            <p>{post.content}</p>
            </div>
-           <div><Link href={`/post/${post.post_id}`}>Ver los X comentarios</Link></div>
+
         </div>
     )
 }

@@ -1,3 +1,5 @@
+"use client"
+import { useRef } from "react";
 import { ChatBubbleLeftIcon, HeartIcon } from "@heroicons/react/24/solid"
 import Image from "next/image"
 import Link from "next/link"
@@ -12,45 +14,64 @@ export default ({
     comments // Añadir la prop comments
 }) => {
 
+    // ! Remover esto y pasarlo a un componente a parte para no usar use client
+    const formRef = useRef(null);
+
+    // Mover la lógica a actions
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter' && !event.shiftKey) {
+            event.preventDefault();
+            formRef.current.submit();
+        }
+    };
+
     return (
         <div className="flex flex-col max-w-sm gap-2">
         <BackButton />
            <div className="flex gap-2">
                 <Image src={post.picture} 
-                    alt="profilePicture"
+                    alt="profile_photo"
                     className="rounded-full"
                     width={24}
                     height={24}
                 />
                 <span>{post.username}</span>
-                <span>X dia</span>
+                <span>X días</span>
            </div>
 
            <div>
                 <Link href={`/post/${post.post_id}`}>
                     <Image src={post.url} 
-                        alt="postImage"
-                        className=""
-                        width={350}
-                        height={350}
+                        alt="post_image"
+                        className="border-2 border-white rounded-md"
+                        width={384}
+                        height={384}
                     />
                 </Link>
            </div>
 
            <div>
                 <div className="flex gap-2">
-                    <LikeButton post_id={post.post_id} user_id={user_id} isLikedInitial={isLikedInitial} />
-                    <ChatBubbleLeftIcon className="w-8" />
+                    <div className="flex gap-1">
+                        <LikeButton post_id={post.post_id} user_id={user_id} isLikedInitial={isLikedInitial} /><span className="mt-1">{post.num_likes}</span>
+                    </div>
+                    <div className="flex gap-1">
+                        <ChatBubbleLeftIcon className="w-8" /><span className="mt-1">{post.num_comments}</span>
+                    </div>
                 </div>
-                <span>{post.num_likes} Me gusta</span>
            </div>
+
            <div>
-            <p><span className="font-bold">{post.username}</span> {post.content}</p>
+            <p>{post.content}</p>
            </div>
-           <form action={addComment}>
-             <input type="hidden" name="post_id" value={post.post_id}></input>
-             <input name="content" className="p-1 rounded-md w-full outline-0 bg-neutral-900" type="text" placeholder="Añadir comentario" required />
-           </form>
+
+            // ! Pasar el formulario a un componente a parte
+           <div className="mt-2">
+               <form ref={formRef} action={addComment}>
+                 <input type="hidden" name="post_id" value={post.post_id}></input>
+                 <textarea name="content" className="p-1 rounded-md w-full outline-0 bg-neutral-900" type="text" placeholder="Añadir comentario" required onKeyDown={handleKeyDown}/>
+               </form>
+           </div>
 
            {/* Comentarios de la publicación */}
            {/* Añadirle un delay con useState y useEffect */}

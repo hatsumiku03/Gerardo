@@ -13,7 +13,8 @@ SELECT
     sa_posts.user_id, 
     username, 
     picture,
-    count(sa_likes.user_id) as num_likes 
+    count(sa_likes.user_id) as num_likes,
+    (SELECT count(*) FROM sa_comments WHERE sa_comments.post_id = sa_posts.post_id) as num_comments
 FROM 
     sa_posts 
     JOIN sa_users USING(user_id) 
@@ -36,9 +37,10 @@ export async function getPost(post_id){
     content, 
     url, 
     sa_posts.user_id, 
-    username, 
+    username,
     picture,
-    count(sa_likes.user_id) as num_likes 
+    count(sa_likes.user_id) as num_likes,
+    (SELECT count(*) FROM sa_comments WHERE sa_comments.post_id = sa_posts.post_id) as num_comments
 FROM 
     sa_posts 
     JOIN sa_users USING(user_id) 
@@ -74,7 +76,7 @@ export async function getCommentsByPostId(post_id) {
             sa_users.picture
         FROM 
             sa_comments 
-            JOIN sa_users ON sa_comments.user_id = sa_users.user_id 
+            JOIN sa_users USING(user_id) 
         WHERE 
             sa_comments.post_id = ${post_id}
     `).rows;
