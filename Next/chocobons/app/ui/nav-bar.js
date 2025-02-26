@@ -8,8 +8,8 @@ from '@heroicons/react/24/solid'
 export default () => {
     
     return (
-        <nav className="flex flex-col gap-4 h-dvh border-e p-4 pr-8 fixed" >
-            <p className='hidden sm:block text-xl italic'>Frieren Social</p>
+        <nav className="flex flex-col gap-4 h-dvh border-e p-4 pr-8 fixed bg-gradient-to-tr from-orange-200 via-orange-200 to-amber-200 dark:bg-gradient-to-r dark:from-slate-900 dark:to-slate-700" >
+            <p className='hidden sm:block text-xl italic'>Chocobons</p>
             
             <NavLink ruta="/" texto="Home" icon={ HomeIcon }></NavLink>
             <NavLink ruta="/search" texto="Search" icon={MagnifyingGlassIcon}></NavLink>

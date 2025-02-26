@@ -1,9 +1,8 @@
-// "use client"
-// import { useRef } from "react";
 import { ChatBubbleLeftIcon, HeartIcon } from "@heroicons/react/24/solid"
 import Image from "next/image"
 import Link from "next/link"
 import LikeButton from "./like-button"
+import LikeButtonComment from "./like-button-comment"
 import BackButton from "./back-button"
 import { addComment } from "../lib/actions"
 
@@ -11,19 +10,9 @@ export default ({
     user_id, 
     post,
     isLikedInitial,
+    isCommentLikedInitial,
     comments // Añadir la prop comments
 }) => {
-
-    // ! Remover esto y pasarlo a un componente a parte para no usar use client
-    // const formRef = useRef(null);
-
-    // // Mover la lógica a actions
-    // const handleKeyDown = (event) => {
-    //     if (event.key === 'Enter' && !event.shiftKey) {
-    //         event.preventDefault();
-    //         formRef.current.submit();
-    //     }
-    // };
 
     return (
         <div className="flex flex-col max-w-sm gap-2">
@@ -73,7 +62,6 @@ export default ({
            </div>
 
            {/* Comentarios de la publicación */}
-           {/* Añadirle un delay con useState y useEffect */}
             <h1 className="text-3xl relative font-bold w-fit p-1 rounded-md">Sección de comentarios</h1>
            <hr></hr>
            <div className="mt-2">
@@ -88,8 +76,8 @@ export default ({
                     </div>
                     <p className="text-lg leading-relaxed mb-6">{comment.content}</p>
                     <div className="flex justify-between items-center">
-                        <div className="flex">
-                            <a href="#" className="text-gray-400 hover:text-gray-200 mr-4"><HeartIcon className="w-8 cursor-pointer"></HeartIcon></a>
+                        <div className="flex  gap-2">
+                            <LikeButtonComment comment_id={comment.comment_id} user_id={user_id} isCommentLikedInitial={isCommentLikedInitial}/><span className="mt-1">{comment.num_likesc}</span>
                             <a href="#" className="text-gray-400 hover:text-gray-200"><ChatBubbleLeftIcon className="w-8 cursor-pointer" /></a>
                         </div>
                         <div className="flex items-center">

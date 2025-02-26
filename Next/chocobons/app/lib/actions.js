@@ -36,10 +36,25 @@ export async function insertLike(post_id, user_id){
     )`
 }
 
+export async function insertLikeComment(comment_id, user_id){
+
+    await sql`INSERT INTO sa_likes_comments(comment_id, user_id) VALUES (
+        ${comment_id},  
+        ${user_id}
+    )`
+}
+
 export async function removeLike(post_id, user_id){
 
     await sql`DELETE FROM sa_likes 
         WHERE post_id = ${post_id} AND user_id = ${user_id}
+    `
+}
+
+export async function removeLikeComment(comment_id, user_id){
+
+    await sql`DELETE FROM sa_likes_comments 
+        WHERE comment_id = ${comment_id} AND user_id = ${user_id}
     `
 }
 

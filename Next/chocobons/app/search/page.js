@@ -1,5 +1,14 @@
 export default () => {
+
     return (
-        <div>This is search</div>
-    )
+        <div>
+            <input 
+                type="text" 
+                placeholder="Buscar nametag..." 
+                className='text-black'
+            />
+            <button>Search</button>
+
+        </div>
+    );
 }

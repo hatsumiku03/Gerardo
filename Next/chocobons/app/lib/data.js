@@ -73,11 +73,36 @@ export async function getCommentsByPostId(post_id) {
             sa_comments.post_id, 
             sa_comments.content, 
             sa_users.name,
-            sa_users.picture
+            sa_users.picture,
+            COUNT(sa_likes_comments.user_id) as num_likesc
         FROM 
             sa_comments 
-            JOIN sa_users USING(user_id) 
+            JOIN sa_users USING(user_id)
+            LEFT JOIN sa_likes_comments ON sa_comments.comment_id = sa_likes_comments.comment_id
         WHERE 
             sa_comments.post_id = ${post_id}
+        GROUP BY 
+            sa_comments.comment_id, 
+            sa_comments.user_id, 
+            sa_comments.post_id, 
+            sa_comments.content, 
+            sa_users.name,
+            sa_users.picture
     `).rows;
-    }
+}
+
+export async function getLikeComment(user_id, comment_id){
+    return (await sql`SELECT comment_id FROM sa_likes_comments WHERE user_id = ${user_id} AND comment_id=${comment_id}`).rows;
+}
+
+export async function searchUsers(query) {
+    const response = await fet/ch(`/search?query=${query}`);
+    const users = await response.json();
+    return users;
+}
+
+export async function getUserProfile() {
+    const response = await fet/ch('/profile');
+    const profile = await response.json();
+    return profile;
+}

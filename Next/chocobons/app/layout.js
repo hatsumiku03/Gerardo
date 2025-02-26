@@ -36,7 +36,7 @@ export default async function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased flex`}>
+      <body className="bg-gradient-to-r from-amber-200 to-teal-400 dark:bg-gradient-to-r dark:from-slate-900 dark:to-slate-950 {`${geistSans.variable} ${geistMono.variable} antialiased flex`}">
         <NavBar></NavBar>
         <div className="p-8 grow flex justify-center align-center">
           {children}

@@ -1,5 +1,8 @@
+
 export default () => {
     return (
-        <div>this is profile page</div>
-    )
+        <div>
+            <p>Profile YA VINO EL LESHERO</p>
+        </div>
+    );
 }
