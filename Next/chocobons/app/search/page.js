@@ -5,8 +5,13 @@ import {searchUsers} from "@/app/lib/data"
 
 export default () => {
     const [search, setSearch] = useState("");
+
+    function enterSearch(){
+        searchUsers(search);
+    }
     
-    // ! Arreglar
+    // ! Arreglar, por alguna razón me da error al hacer la búsqueda diciendo
+    // ! que la variable postgres_url no esta definida, cuando efectivamente, esta defindo xD
     return (
         <div className="flex gap-2 flex-col">
             <input
@@ -15,7 +20,7 @@ export default () => {
                 placeholder="Buscar nametag..." 
                 className='text-black'
             />
-            <button onClick={() =>searchUsers(search)}>Search</button>
+            <button onClick={enterSearch}>Search</button>
             {search}
         </div>
     );
