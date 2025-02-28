@@ -15,7 +15,7 @@ export default () => {
                 placeholder="Buscar nametag..." 
                 className='text-black'
             />
-            <button onClick={searchUsers(search)}>Search</button>
+            <button onClick={() =>searchUsers(search)}>Search</button>
             {search}
         </div>
     );
