@@ -95,14 +95,18 @@ export async function getLikeComment(user_id, comment_id){
     return (await sql`SELECT comment_id FROM sa_likes_comments WHERE user_id = ${user_id} AND comment_id=${comment_id}`).rows;
 }
 
-export async function searchUsers(query) {
-    const response = await fet/ch(`/search?query=${query}`);
-    const users = await response.json();
-    return users;
+export async function searchUsers(user_name){
+    return (await sql`SELECT name, picture FROM sa_users WHERE name LIKE '%${user_name}%'`).rows;
 }
 
-export async function getUserProfile() {
-    const response = await fet/ch('/profile');
-    const profile = await response.json();
-    return profile;
-}
+// export async function searchUsers(query) {
+//     const response = await fetch(`/search?query=${query}`);
+//     const users = await response.json();
+//     return users;
+// }
+
+// export async function getUserProfile() {
+//     const response = await fetch('/profile');
+//     const profile = await response.json();
+//     return profile;
+// }
