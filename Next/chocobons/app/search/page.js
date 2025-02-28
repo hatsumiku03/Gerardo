@@ -12,6 +12,8 @@ export default () => {
     
     // ! Arreglar, por alguna razón me da error al hacer la búsqueda diciendo
     // ! que la variable postgres_url no esta definida, cuando efectivamente, esta defindo xD
+
+    // ! Falta definir bien la consulta, no la tengo exactamente como debería (creo)
     return (
         <div className="flex gap-2 flex-col">
             <input
@@ -21,7 +23,8 @@ export default () => {
                 className='text-black'
             />
             <button onClick={enterSearch}>Search</button>
-            {search}
+            {search.name}
+            {search.picture}
         </div>
     );
 }
