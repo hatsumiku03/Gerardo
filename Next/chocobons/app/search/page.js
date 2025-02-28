@@ -8,12 +8,13 @@ export default () => {
     const [users, setUsers] = useState([]);
 
 
-    function enterSearch(userName, userPicture){
-        searchUsers(search);
+    async function enterSearch(){
+        const userData = await searchUsers(search);
+        setUsers(userData);
     }
     
-    // ! Arreglar, por alguna razón me da error al hacer la búsqueda diciendo
-    // ! que la variable postgres_url no esta definida, cuando efectivamente, esta defindo xD
+    // ! No funciona, no se porque, pero me da error de que
+    // ! no detecta el .env
     return (
         <div className="flex gap-2 flex-col">
             <input
